@@ -1,6 +1,6 @@
 # BrainTree
 
-A C++ [behavior tree](http://gamasutra.com/blogs/ChrisSimpson/20140717/221339/Behavior_trees_for_AI_How_they_work.php) single header library.
+A C++ [behavior tree] single header library.
 
 ## Features
 
@@ -43,22 +43,12 @@ void CreatingBehaviorTreeManually()
     tree.update();
 }
 
-void CreatingBehaviorTreeUsingBuilders()
-{
-    auto tree = BrainTree::Builder()
-        .composite<BrainTree::Sequence>()
-            .leaf<Action>()
-            .leaf<Action>()
-        .end()
-        .build();
-    tree->update();
-}
+
 
 int main()
 {
     CreatingBehaviorTreeManually();
-    CreatingBehaviorTreeUsingBuilders();
-    return 0;
+      return 0;
 }
 ```
 
@@ -82,27 +72,8 @@ int main()
 | UntilSuccess | Repeats until child node succeeds                         |
 | UntilFailure | Repeats until child node fails                            |
 
-## Builder
 
-The Builder class simplifies the process of creating a behavior tree. You use three methods to build your tree:
-
-- `leaf<NodeType>()`
-- `composite<CompositeType>()`
-- `decorator<DecoratorType>()`
-
-Both `composite()` and `decorator()` require a corresponding call to `end()`, this marks where you are done adding children to a composite or a child to a decorator. At the very end you call `build()` which will then give you the finished behavior tree.
-
-```
-auto tree = Builder()
-    .decorator<Repeater>()
-        .composite<Sequence>()
-            .leaf<SayHello>("Foo")
-            .leaf<SayHello>("Bar")
-        .end()
-    .end()
-    .build();
-```
 
 ## License
 
-MIT (c) Pär Arvidsson 2015-2018
+MIT (c), Jonathan James 2024-2025
