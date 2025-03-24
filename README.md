@@ -1,4 +1,4 @@
-# BrainTree
+# BehaviorTree
 
 A C++ [behavior tree] single header library.
 
